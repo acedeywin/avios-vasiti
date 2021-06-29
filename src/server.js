@@ -2,6 +2,7 @@ import express from "express"
 import expressValidator from "express-validator"
 import dotenv from "dotenv-safe"
 import { errorResponse, successResponse } from "./utils/helpers"
+import routes from "./routes"
 
 dotenv.config({ silent: true })
 
@@ -12,7 +13,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(expressValidator())
 
-// app.use("/", routes)
+app.use("/", routes)
 
 app.get("/", (req, res) => {
   return successResponse(res, 200, true, "Welcome to Avios")
